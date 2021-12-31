@@ -1,0 +1,19 @@
+{
+  "name": "gameserver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jon004/gameserver.git"
+  },
+  "author": "Jonathan Muniz-Murguia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jon004/gameserver/issues"
+  },
+  "homepage": "https://github.com/jon004/gameserver#readme"
+}
