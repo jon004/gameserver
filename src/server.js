@@ -6,7 +6,7 @@ const express_components = require("./config/express_config");
 
 const app = express_components.app;
 
-require("./endpoints/authentication")
+require("./endpoints/express/authentication")
     .set(app, express_components.auth.passport);
 
 //**********************************************************/
@@ -19,7 +19,10 @@ server.listen(port, () => {
     console.log("listening... host:" + host + ", port:" + port);
 });
 
-// const io = socketIO(server, { cors: {origin: "*"} });
-// io.on("connection", (socket) => {
-//     socket.on("disconnect", () => {});
-// });
+
+//**********************************************************/
+const io = socketIO(server, {cors: {origin: '*'}});
+  
+io.on("connect", (socket) => {
+    require("./endpoints/sockets/connection").set(socket);
+})
