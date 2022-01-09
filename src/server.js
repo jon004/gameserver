@@ -1,28 +1,25 @@
-const http = require("http");
-const socketIO = require("socket.io");
-const express_components = require("./config/express_config");
+// external
+const http = require('http');
+const socketIO = require('socket.io');
+
+// internal
+const app = require('./express');
+const net = require('./utils/network');
 
 //**********************************************************/
-
-const app = express_components.app;
-
-require("./endpoints/express/authentication")
-    .set(app, express_components.auth.passport);
+// set express endpoints
+require("./endpoints/express/authentication");
 
 //**********************************************************/
-
-const port = 3000;
-const host = "localhost";
-
+// start server (need to start server before socket io)
 const server = http.createServer(app);
-server.listen(port, () => {
-    console.log("listening... host:" + host + ", port:" + port);
+server.listen(net.port, () => {
+    console.log("listening... " + net.host + ":" + net.port);
 });
 
-
 //**********************************************************/
+// set socket io endpoints
 const io = socketIO(server, {cors: {origin: '*'}});
-  
 io.on("connect", (socket) => {
     require("./endpoints/sockets/connection").set(socket);
 })
