@@ -1,10 +1,10 @@
 // external
 const http = require('http');
-const socketIO = require('socket.io');
 
 // internal
-const app = require('./express');
 const net = require('./utils/network');
+const app = require('./express');
+
 
 //**********************************************************/
 // set express endpoints
@@ -18,8 +18,14 @@ server.listen(net.port, () => {
 });
 
 //**********************************************************/
-// set socket io endpoints
-const io = socketIO(server, {cors: {origin: '*'}});
-io.on("connect", (socket) => {
-    require("./endpoints/sockets/connection").set(socket);
-})
+// set socket io config
+const io = require('socket.io')(server, {
+    cors: {
+        origin: '*'
+    }
+});
+require('./socket_middleware')(io);
+
+io.on("connection", (socket) => {
+    require("./endpoints/sockets/chat").set(socket);
+});
