@@ -1,7 +1,7 @@
 const net = require('../../utils/network');
 const db = require('../../databases/usernamedb');
 const app = require('../../express');
-const auth = require('../../authentication');
+const auth = require('../../middleware/authentication');
 
 const passport = auth.passport;
 

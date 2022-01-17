@@ -25,7 +25,7 @@ const io = require('socket.io')(server, {
     }
 });
 
-require('./socket_middleware')(io);
+require('./middleware/socket_middleware')(io);
 
 io.on("connection", (socket) => {
     require("./endpoints/sockets/chat").set(io, socket);

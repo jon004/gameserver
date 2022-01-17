@@ -1,4 +1,4 @@
-const session_manager = require('./express').session_manager;
+const session_manager = require('../express').session_manager;
 
 const setMiddleware = (io) => {
     io.use((socket, next) => {

@@ -3,8 +3,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
 // internal
-require('dotenv').config({ path: "./local.env" });
-const usernames = require("./databases/usernamedb");
+const usernames = require("../databases/usernamedb");
 
 //****************************************************************//
 const loggedInVerification = (req, res, next) => {

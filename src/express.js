@@ -1,7 +1,7 @@
 const express_session = require("express-session");
 const express = require("express");
 const bodyParser = require('body-parser');
-const auth = require("./authentication");
+const auth = require("./middleware/authentication");
 
 const session_manager = express_session({
     secret: '23FASDF123ASF23F657GS4G2369',
