@@ -4,7 +4,6 @@ const LocalStrategy = require('passport-local').Strategy;
 
 // internal
 require('dotenv').config({ path: "./local.env" });
-const session_secret = process.env.SESSION_SECRET;
 const usernames = require("./databases/usernamedb");
 
 //****************************************************************//
@@ -44,7 +43,6 @@ passport.deserializeUser((username, done) => {
 
 module.exports = {
     passport,
-    session_secret,
     loggedInVerification,
     loggedOutVerification
 };

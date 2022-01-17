@@ -4,9 +4,9 @@ const bodyParser = require('body-parser');
 const auth = require("./authentication");
 
 const session_manager = express_session({
-    secret: auth.session_secret,
+    secret: '23FASDF123ASF23F657GS4G2369',
     resave: true,
-    saveUninitialized: false
+    saveUninitialized: false,
 })
 //**********************************************************/
 //**********************************************************/
